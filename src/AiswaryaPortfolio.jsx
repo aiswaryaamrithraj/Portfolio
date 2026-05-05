@@ -20,11 +20,52 @@ const SKILLS = {
   "DB & Tools": { icon: <Database size={18}/>, items: [{ name:"MySQL",level:85},{ name:"MongoDB",level:78},{ name:"Git & GitHub",level:88},{ name:"Figma / AWS",level:65}] },
 };
 
+/* ─── PROJECTS — ADD YOUR REAL URLs HERE ────────────────────────────── */
 const PROJECTS = [
-  { title:"Role Based Finance Dashboard", period:"Mar–Apr 2026", icon:<BarChart3 size={22}/>, tech:["Node.js","Express.js","React.js","MySQL","JWT"], color:"orange", desc:"Full-stack finance dashboard with JWT-based authentication, role-based access control (Admin, Analyst, Viewer), advanced multi-parameter filtering, and real-time KPI analytics.", highlights:["JWT Auth + RBAC","Real-time Analytics","Full CRUD + Pagination","Production Deployed"] },
-  { title:"Sustainable Thrift Store Platform", period:"Nov–Dec 2025", icon:<ShoppingBag size={22}/>, tech:["React.js","Node.js","MongoDB","Tailwind CSS"], color:"teal", desc:"Revenue-generating MERN e-commerce platform with 10+ core features including time-based drops, live countdown timers, and 15+ RESTful APIs.", highlights:["10+ Core Features","Live Countdown Drops","Heart Wishlists","MVC Architecture"] },
-  { title:"ShadowBan Detector", period:"2025", icon:<Eye size={22}/>, tech:["Python","AI/ML","Flask"], color:"violet", desc:"AI-powered social media visibility analysis tool detecting shadowban status across platforms with 87% accuracy through intelligent pattern recognition.", highlights:["87% Accuracy","AI-Powered","Cross-Platform","Real-time Detection"] },
-  { title:"PDF Viewer & Extractor", period:"2025", icon:<FileText size={22}/>, tech:["Next.js","MongoDB","Node.js"], color:"amber", desc:"Internship data extraction dashboard processing PDF documents and surfacing structured insights with SSR performance.", highlights:["PDF Parsing","Data Extraction","Dashboard UI","MongoDB Storage"] },
+  {
+    title: "Role Based Finance Dashboard",
+    period: "Mar–Apr 2026",
+    icon: <BarChart3 size={22}/>,
+    tech: ["Node.js","Express.js","React.js","MySQL","JWT"],
+    color: "orange",
+    liveUrl: "https://rolefinancedashboards.netlify.app/",        // ← your live URL
+    githubUrl: "https://github.com/aiswaryaamrithraj/Finance-Dashboard",    // ← your github repo
+    desc: "Full-stack finance dashboard with JWT-based authentication, role-based access control (Admin, Analyst, Viewer), advanced multi-parameter filtering, and real-time KPI analytics.",
+    highlights: ["JWT Auth + RBAC","Real-time Analytics","Full CRUD + Pagination","Production Deployed"],
+  },
+  {
+    title: "Sustainable Thrift Store Platform",
+    period: "Nov–Dec 2025",
+    icon: <ShoppingBag size={22}/>,
+    tech: ["React.js","Node.js","MongoDB","Tailwind CSS"],
+    color: "teal",
+    liveUrl: "",                                                     
+    githubUrl: "https://github.com/aiswaryaamrithraj/Rethreads_India",   
+    desc: "Revenue-generating MERN e-commerce platform with 10+ core features including time-based drops, live countdown timers, and 15+ RESTful APIs.",
+    highlights: ["10+ Core Features","Live Countdown Drops","Heart Wishlists","MVC Architecture"],
+  },
+  {
+    title: "ShadowBan Detector",
+    period: "2025",
+    icon: <Eye size={22}/>,
+    tech: ["Python","AI/ML","Flask"],
+    color: "violet",
+    liveUrl: "",
+    githubUrl: "https://github.com/aiswaryaamrithraj/ShadowBan-Detector-",  
+    desc: "AI-powered social media visibility analysis tool detecting shadowban status across platforms with 87% accuracy through intelligent pattern recognition.",
+    highlights: ["87% Accuracy","AI-Powered","Cross-Platform","Real-time Detection"],
+  },
+  {
+    title: "PDF Viewer & Extractor",
+    period: "2025",
+    icon: <FileText size={22}/>,
+    tech: ["Next.js","MongoDB","Node.js"],
+    color: "amber",
+    liveUrl: "",
+    githubUrl: "https://github.com/aiswaryaamrithraj/pdf-ai-dashboard",    
+    desc: "Internship data extraction dashboard processing PDF documents and surfacing structured insights with SSR performance.",
+    highlights: ["PDF Parsing","Data Extraction","Dashboard UI","MongoDB Storage"],
+  },
 ];
 
 const COLOR_MAP = {
@@ -46,8 +87,6 @@ function useInView(ref, threshold = 0.12) {
 }
 
 /* ─── SVG ILLUSTRATIONS ─────────────────────────────────────────────── */
-
-// Floating geometric orbs background used in Hero
 function HeroBg() {
   return (
     <svg style={{ position:"absolute", inset:0, width:"100%", height:"100%", pointerEvents:"none", overflow:"hidden" }} viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
@@ -65,18 +104,15 @@ function HeroBg() {
           <stop offset="100%" stopColor="#f97316" stopOpacity="0"/>
         </radialGradient>
       </defs>
-      {/* Large orbs */}
       <ellipse cx="1100" cy="200" rx="420" ry="420" fill="url(#orb1)"/>
       <ellipse cx="200" cy="700" rx="300" ry="300" fill="url(#orb2)"/>
       <ellipse cx="700" cy="900" rx="350" ry="350" fill="url(#orb3)"/>
-      {/* Grid lines */}
       {Array.from({length:12}).map((_,i)=>(
-        <line key={i} x1={i*130} y1="0" x2={i*130} y2="900" stroke="#f97316" strokeOpacity="0.03" strokeWidth="1"/>
+        <line key={`v${i}`} x1={i*130} y1="0" x2={i*130} y2="900" stroke="#f97316" strokeOpacity="0.03" strokeWidth="1"/>
       ))}
       {Array.from({length:8}).map((_,i)=>(
-        <line key={i} x1="0" y1={i*130} x2="1440" y2={i*130} stroke="#f97316" strokeOpacity="0.03" strokeWidth="1"/>
+        <line key={`h${i}`} x1="0" y1={i*130} x2="1440" y2={i*130} stroke="#f97316" strokeOpacity="0.03" strokeWidth="1"/>
       ))}
-      {/* Floating diamonds */}
       <g style={{animation:"floatA 8s ease-in-out infinite"}}>
         <rect x="1280" y="120" width="18" height="18" rx="2" fill="#f97316" fillOpacity="0.35" transform="rotate(45 1289 129)"/>
       </g>
@@ -86,7 +122,6 @@ function HeroBg() {
       <g style={{animation:"floatA 12s ease-in-out infinite 2s"}}>
         <rect x="900" y="60" width="10" height="10" rx="1" fill="#f97316" fillOpacity="0.3" transform="rotate(45 905 65)"/>
       </g>
-      {/* Circles */}
       <circle cx="1350" cy="500" r="6" fill="none" stroke="#f97316" strokeOpacity="0.4" strokeWidth="1.5" style={{animation:"floatB 9s ease-in-out infinite 1s"}}/>
       <circle cx="80" cy="400" r="4" fill="none" stroke="#8b5cf6" strokeOpacity="0.5" strokeWidth="1.5" style={{animation:"floatA 11s ease-in-out infinite 3s"}}/>
       <circle cx="600" cy="80" r="5" fill="#f97316" fillOpacity="0.3" style={{animation:"floatB 7s ease-in-out infinite 0.5s"}}/>
@@ -94,7 +129,6 @@ function HeroBg() {
   );
 }
 
-// Abstract developer illustration
 function DevIllustration() {
   return (
     <svg viewBox="0 0 460 460" style={{width:"100%",maxWidth:460,height:"auto"}} xmlns="http://www.w3.org/2000/svg">
@@ -107,26 +141,17 @@ function DevIllustration() {
         <clipPath id="avatarClip">
           <circle cx="230" cy="230" r="150"/>
         </clipPath>
-        <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#1e293b"/>
-          <stop offset="100%" stopColor="#0f172a"/>
-        </linearGradient>
         <filter id="glow">
           <feGaussianBlur stdDeviation="4" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
       </defs>
-      {/* Outer glow ring */}
       <circle cx="230" cy="230" r="200" fill="url(#avatarGlow)"/>
-      {/* Pulsing rings */}
       <circle cx="230" cy="230" r="165" fill="none" stroke="#f97316" strokeWidth="1.5" strokeOpacity="0.5" style={{animation:"ringPulse 3s ease-in-out infinite"}}/>
       <circle cx="230" cy="230" r="182" fill="none" stroke="#f97316" strokeWidth="0.8" strokeOpacity="0.25" style={{animation:"ringPulse 3s ease-in-out infinite 0.6s"}}/>
-      {/* Background circle */}
       <circle cx="230" cy="230" r="150" fill="#0d1424"/>
       <circle cx="230" cy="230" r="150" fill="none" stroke="#f97316" strokeWidth="2.5"/>
-      {/* Profile silhouette placeholder art — abstract tech person */}
-      <image href="https://ia800104.us.archive.org/29/items/gemini-generated-image-bsmzh-6bsmzh-6bsmz-1/Gemini_Generated_Image_bsmzh6bsmzh6bsmz%20%281%29.png" x="80" y="80" width="300" height="300" clipPath="url(#avatarClip)" preserveAspectRatio="xMidYMid slice"/>
-      {/* Code snippets floating around */}
+      <image href="https://ia601806.us.archive.org/31/items/gemini-generated-image-lujc-11lujc-11lujc-removebg-preview/Gemini_Generated_Image_lujc11lujc11lujc-removebg-preview.png" x="80" y="90" width="330" height="330" clipPath="url(#avatarClip)" preserveAspectRatio="xMidYMid slice"/>
       <g style={{animation:"floatA 6s ease-in-out infinite"}} filter="url(#glow)">
         <rect x="10" y="80" width="110" height="56" rx="10" fill="#0d1424" stroke="rgba(249,115,22,0.5)" strokeWidth="1"/>
         <text x="20" y="101" fill="#f97316" fontSize="9" fontFamily="monospace" opacity="0.9">const auth =</text>
@@ -149,14 +174,12 @@ function DevIllustration() {
         <text x="20" y="340" fill="#8b5cf6" fontSize="9" fontFamily="monospace" opacity="0.9">import React</text>
         <text x="20" y="355" fill="#f97316" fontSize="9" fontFamily="monospace" opacity="0.9">from 'react'</text>
       </g>
-      {/* Orbit dots */}
       {[0,60,120,180,240,300].map((angle,i)=>{
         const rad = (angle * Math.PI)/180;
         const cx = 230 + 195*Math.cos(rad);
         const cy = 230 + 195*Math.sin(rad);
         return <circle key={i} cx={cx} cy={cy} r={i%2===0?4:2.5} fill="#f97316" fillOpacity={i%2===0?0.8:0.4}/>;
       })}
-      {/* Skill badge */}
       <g style={{animation:"floatA 5s ease-in-out infinite 1.5s"}}>
         <rect x="155" y="360" width="150" height="38" rx="19" fill="#f97316" filter="url(#glow)"/>
         <text x="230" y="383" fill="white" fontSize="12" fontFamily="'Josefin Sans',sans-serif" fontWeight="700" textAnchor="middle" letterSpacing="1">FULL-STACK DEV</text>
@@ -165,7 +188,6 @@ function DevIllustration() {
   );
 }
 
-// Skills section background illustration
 function SkillsBg() {
   return (
     <svg style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"none",overflow:"hidden"}} viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
@@ -177,7 +199,6 @@ function SkillsBg() {
       </defs>
       <ellipse cx="100" cy="400" rx="350" ry="350" fill="url(#sbg1)"/>
       <ellipse cx="1340" cy="400" rx="350" ry="350" fill="url(#sbg1)"/>
-      {/* Hexagon grid pattern */}
       {Array.from({length:6}).map((_,row)=>
         Array.from({length:10}).map((_,col)=>{
           const x = col*160 + (row%2)*80;
@@ -193,7 +214,6 @@ function SkillsBg() {
   );
 }
 
-// About section illustration — abstract profile with circles
 function AboutIllustration() {
   return (
     <svg viewBox="0 0 320 380" style={{width:"100%",maxWidth:320}} xmlns="http://www.w3.org/2000/svg">
@@ -203,33 +223,27 @@ function AboutIllustration() {
           <stop offset="100%" stopColor="transparent"/>
         </radialGradient>
       </defs>
-      {/* Background art */}
-      <rect width="320" height="380" rx="24" fill="#0d1424"/>
-      <rect width="320" height="380" rx="24" fill="none" stroke="rgba(249,115,22,0.15)" strokeWidth="1"/>
-      {/* Decorative arcs */}
+      <rect width="320" height="450" rx="24" fill="#0d1424"/>
+      <rect width="320" height="450" rx="24" fill="none" stroke="rgba(249,115,22,0.15)" strokeWidth="1"/>
       <circle cx="160" cy="160" r="130" fill="none" stroke="rgba(249,115,22,0.08)" strokeWidth="40"/>
       <circle cx="160" cy="160" r="100" fill="none" stroke="rgba(139,92,246,0.08)" strokeWidth="30"/>
-      {/* Center circle */}
       <circle cx="160" cy="150" r="85" fill="#111827"/>
       <circle cx="160" cy="150" r="85" fill="none" stroke="#f97316" strokeWidth="2"/>
-      {/* Placeholder image */}
-      <image href="https://ia800104.us.archive.org/29/items/gemini-generated-image-bsmzh-6bsmzh-6bsmz-1/Gemini_Generated_Image_bsmzh6bsmzh6bsmz%20%281%29.png" x="75" y="65" width="170" height="170" clipPath="url(#aClip)" preserveAspectRatio="xMidYMid slice"/>
-      <defs><clipPath id="aClip"><circle cx="160" cy="150" r="85"/></clipPath></defs>
-      {/* Bottom info area */}
-      <rect x="20" y="262" width="280" height="100" rx="14" fill="rgba(249,115,22,0.06)" stroke="rgba(249,115,22,0.18)" strokeWidth="1"/>
-      <text x="160" y="288" fill="#f8fafc" fontSize="14" fontFamily="'Playfair Display',serif" fontWeight="700" textAnchor="middle">Aiswarya Amrithraj E</text>
-      <text x="160" y="308" fill="#f97316" fontSize="11" fontFamily="'Josefin Sans',sans-serif" fontWeight="600" textAnchor="middle" letterSpacing="1">FULL-STACK DEVELOPER</text>
-      <line x1="60" y1="320" x2="260" y2="320" stroke="rgba(249,115,22,0.2)" strokeWidth="1"/>
-      <text x="160" y="338" fill="#64748b" fontSize="10" fontFamily="'Josefin Sans',sans-serif" textAnchor="middle">B.Tech CSE · LPU Punjab</text>
-      <text x="160" y="354" fill="#64748b" fontSize="10" fontFamily="'Josefin Sans',sans-serif" textAnchor="middle">aiswaryaamrithraje@gmail.com</text>
-      {/* Corner accents */}
+      <circle cx="160" cy="150" r="85" fill="#1a1a2e"/>
+      <image
+        href="https://ia600700.us.archive.org/6/items/gemini-generated-image-vcyg-7lvcyg-7lvcyg-1-removebg-preview/Gemini_Generated_Image_vcyg7lvcyg7lvcyg__1_-removebg-preview.png"
+        x="40" y="20" width="240" height="320"
+        preserveAspectRatio="xMidYMid slice"
+      />
+      <rect x="20" y="320" width="280" height="100" rx="14" fill="rgba(249,115,22,0.06)" stroke="rgba(249,115,22,0.18)" strokeWidth="1"/>
+      <text x="160" y="346" fill="#f8fafc" fontSize="14" fontFamily="'Playfair Display',serif" fontWeight="700" textAnchor="middle">Aiswarya Amrithraj E</text>
+      <text x="160" y="368" fill="#f97316" fontSize="11" fontFamily="'Josefin Sans',sans-serif" fontWeight="600" textAnchor="middle" letterSpacing="1">FULL-STACK DEVELOPER</text>
       <path d="M20,32 L20,20 L32,20" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round"/>
       <path d="M288,32 L288,20 L276,20" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round"/>
     </svg>
   );
 }
 
-// Contact section background
 function ContactBg() {
   return (
     <svg style={{position:"absolute",inset:0,width:"100%",height:"100%",pointerEvents:"none"}} viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
@@ -240,7 +254,6 @@ function ContactBg() {
         </radialGradient>
       </defs>
       <ellipse cx="720" cy="800" rx="600" ry="400" fill="url(#cbg)"/>
-      {/* Diagonal lines */}
       {Array.from({length:20}).map((_,i)=>(
         <line key={i} x1={i*80-400} y1="0" x2={i*80+400} y2="800" stroke="#f97316" strokeOpacity="0.025" strokeWidth="1"/>
       ))}
@@ -334,8 +347,6 @@ function Navbar() {
         @keyframes floatB{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(-5deg)}}
         @keyframes ringPulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.05);opacity:0.2}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes slideRight{from{width:0}to{width:100%}}
-        @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
         @keyframes typeBlink{0%,100%{opacity:1}50%{opacity:0}}
         * { box-sizing: border-box; margin: 0; padding: 0; }
         ::selection { background: rgba(249,115,22,0.3); color: #fff; }
@@ -382,35 +393,17 @@ function Hero() {
       position:"relative", overflow:"hidden", padding:"100px 2.5rem 60px",
     }}>
       <HeroBg/>
-
       <div style={{maxWidth:1200, margin:"0 auto", width:"100%", display:"flex", alignItems:"center", justifyContent:"space-between", gap:"3rem", flexWrap:"wrap", position:"relative", zIndex:1}}>
-        {/* Left */}
         <div style={{flex:"1 1 420px", opacity:loaded?1:0, animation:loaded?"fadeUp 0.9s ease both":"none"}}>
-          {/* Available badge */}
           <div style={{display:"inline-flex", alignItems:"center", gap:8, background:"rgba(249,115,22,0.08)", border:"1px solid rgba(249,115,22,0.28)", borderRadius:50, padding:"7px 18px", marginBottom:28}}>
             <span style={{width:7, height:7, borderRadius:"50%", background:"#f97316", boxShadow:"0 0 8px #f97316", animation:"typeBlink 1.8s infinite"}}/>
             <span style={{color:"#f97316", fontSize:11, fontWeight:700, letterSpacing:"2.5px", fontFamily:"'Josefin Sans', sans-serif"}}>AVAILABLE FOR INTERNSHIP</span>
           </div>
-
-          {/* Hello */}
           <p style={{color:"#64748b", fontSize:17, fontFamily:"'Cormorant Garamond', serif", fontStyle:"italic", marginBottom:8, letterSpacing:"0.5px"}}>Hello, I'm</p>
-
-          {/* Name */}
-          <h1 style={{
-            fontSize:"clamp(2.6rem, 5.5vw, 4.8rem)", fontWeight:900, color:"#f8fafc",
-            lineHeight:1.05, marginBottom:6,
-            fontFamily:"'Playfair Display', serif",
-            letterSpacing:"-2px",
-          }}>
+          <h1 style={{fontSize:"clamp(2.6rem, 5.5vw, 4.8rem)", fontWeight:900, color:"#f8fafc", lineHeight:1.05, marginBottom:6, fontFamily:"'Playfair Display', serif", letterSpacing:"-2px"}}>
             Aiswarya<br/>
-            <span style={{
-              WebkitTextStroke:"1px #f97316",
-              color:"transparent",
-              letterSpacing:"-1px",
-            }}>Amrithraj E</span>
+            <span style={{WebkitTextStroke:"1px #f97316", color:"transparent", letterSpacing:"-1px"}}>Amrithraj E</span>
           </h1>
-
-          {/* Typewriter */}
           <div style={{display:"flex", alignItems:"center", gap:8, marginBottom:28, marginTop:16, height:34}}>
             <span style={{width:3, height:28, background:"#f97316", borderRadius:2, flexShrink:0}}/>
             <span style={{color:"#f97316", fontSize:20, fontFamily:"'Josefin Sans', sans-serif", fontWeight:600, letterSpacing:"0.5px"}}>
@@ -418,48 +411,29 @@ function Hero() {
               <span style={{animation:"typeBlink 0.8s infinite", borderLeft:"2px solid #f97316", marginLeft:1}}>&nbsp;</span>
             </span>
           </div>
-
           <p style={{color:"#94a3b8", fontSize:15.5, lineHeight:1.8, marginBottom:38, maxWidth:500, fontFamily:"'Josefin Sans', sans-serif", fontWeight:300}}>
             Pre-final year CSE student focused on building and deploying scalable web applications. Strong foundation in REST API integration, backend development, and performance optimization.
           </p>
-
-          {/* CTA Buttons */}
           <div style={{display:"flex", gap:14, flexWrap:"wrap", marginBottom:38}}>
             <button onClick={() => document.getElementById("contact")?.scrollIntoView({behavior:"smooth"})}
-              style={{
-                background:"#f97316", border:"none", color:"#fff", fontSize:13, fontWeight:700,
-                padding:"15px 32px", borderRadius:50, cursor:"pointer", transition:"all 0.3s",
-                boxShadow:"0 6px 26px rgba(249,115,22,0.5)", display:"flex", alignItems:"center", gap:9,
-                fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1.5px", textTransform:"uppercase",
-              }}
+              style={{background:"#f97316", border:"none", color:"#fff", fontSize:13, fontWeight:700, padding:"15px 32px", borderRadius:50, cursor:"pointer", transition:"all 0.3s", boxShadow:"0 6px 26px rgba(249,115,22,0.5)", display:"flex", alignItems:"center", gap:9, fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1.5px", textTransform:"uppercase"}}
               onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)"; e.currentTarget.style.boxShadow="0 14px 38px rgba(249,115,22,0.65)";}}
               onMouseLeave={e=>{e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="0 6px 26px rgba(249,115,22,0.5)";}}>
               Hire Me <ArrowRight size={15}/>
             </button>
-            <a href="https://drive.google.com/file/d/17COJ50xsMTShg9Srv85PwHHdTAfpu0O6/view?usp=sharing" download style={{
-              background:"transparent", border:"1.5px solid rgba(249,115,22,0.6)", color:"#f97316",
-              fontSize:13, fontWeight:700, padding:"13px 30px", borderRadius:50, cursor:"pointer",
-              transition:"all 0.3s", display:"flex", alignItems:"center", gap:9, textDecoration:"none",
-              fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1.5px", textTransform:"uppercase",
-            }}
+            <a href="https://drive.google.com/file/d/17COJ50xsMTShg9Srv85PwHHdTAfpu0O6/view?usp=sharing" download style={{background:"transparent", border:"1.5px solid rgba(249,115,22,0.6)", color:"#f97316", fontSize:13, fontWeight:700, padding:"13px 30px", borderRadius:50, cursor:"pointer", transition:"all 0.3s", display:"flex", alignItems:"center", gap:9, textDecoration:"none", fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1.5px", textTransform:"uppercase"}}
               onMouseEnter={e=>{e.currentTarget.style.background="rgba(249,115,22,0.1)"; e.currentTarget.style.transform="translateY(-3px)";}}
               onMouseLeave={e=>{e.currentTarget.style.background="transparent"; e.currentTarget.style.transform="none";}}>
               <Download size={15}/> Resume
             </a>
           </div>
-
-          {/* Social links */}
           <div style={{display:"flex", gap:12}}>
             {[
-              { icon: <GitBranch size={20} />, label: "GitHub", url: "https://github.com/aiswaryaamrithraj" },
-              { icon: <Globe size={20} />, label: "LinkedIn", url: "https://www.linkedin.com/in/aiswarya-amrithraj-e/" },
+              {icon:<GitBranch size={20}/>, label:"GitHub", url:"https://github.com/aiswaryaamrithraj"},
+              {icon:<Globe size={20}/>, label:"LinkedIn", url:"https://www.linkedin.com/in/aiswarya-amrithraj-e/"},
               {icon:<Mail size={19}/>, label:"Email", url:"mailto:aiswaryaamrithraje@gmail.com"},
-            ].map(({icon, label, url}) => (
-              <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{
-                width:46, height:46, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center",
-                background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.1)", color:"#64748b",
-                transition:"all 0.3s", textDecoration:"none",
-              }}
+            ].map(({icon,label,url}) => (
+              <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{width:46, height:46, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.1)", color:"#64748b", transition:"all 0.3s", textDecoration:"none"}}
                 onMouseEnter={e=>{e.currentTarget.style.background="rgba(249,115,22,0.14)"; e.currentTarget.style.border="1px solid rgba(249,115,22,0.5)"; e.currentTarget.style.color="#f97316"; e.currentTarget.style.transform="translateY(-4px)";}}
                 onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,0.04)"; e.currentTarget.style.border="1px solid rgba(255,255,255,0.1)"; e.currentTarget.style.color="#64748b"; e.currentTarget.style.transform="none";}}>
                 {icon}
@@ -467,13 +441,10 @@ function Hero() {
             ))}
           </div>
         </div>
-
-        {/* Right — Illustration */}
         <div style={{flex:"0 0 auto", opacity:loaded?1:0, animation:loaded?"fadeUp 0.9s ease 0.25s both":"none", display:"flex", alignItems:"center", justifyContent:"center"}}>
           <DevIllustration/>
         </div>
       </div>
-
       <div style={{position:"absolute", bottom:28, left:"50%", transform:"translateX(-50%)", animation:"floatB 2.5s ease-in-out infinite"}}>
         <ChevronDown size={22} color="#f97316" opacity={0.5}/>
       </div>
@@ -484,29 +455,21 @@ function Hero() {
 function About() {
   const ref = useRef();
   const inView = useInView(ref);
-
   const INFO = [
     {icon:<User size={15}/>, label:"Name", value:"Aiswarya Amrithraj E"},
     {icon:<Mail size={15}/>, label:"Email", value:"aiswaryaamrithraje@gmail.com"},
     {icon:<Phone size={15}/>, label:"Phone", value:"+91 7560959959"},
     {icon:<MapPin size={15}/>, label:"Education", value:"B.Tech CSE, LPU Punjab"},
   ];
-
   return (
     <section id="about" style={{padding:"110px 2.5rem", background:"#070b18", position:"relative", overflow:"hidden"}}>
-      {/* Subtle background image overlay */}
       <div style={{position:"absolute", inset:0, backgroundImage:"url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&auto=format&q=30')", backgroundSize:"cover", backgroundPosition:"center", opacity:0.025, pointerEvents:"none"}}/>
-
       <div ref={ref} style={{maxWidth:1100, margin:"0 auto", position:"relative", zIndex:1, opacity:inView?1:0, transform:inView?"none":"translateY(44px)", transition:"all 0.9s ease"}}>
         <SectionHeader label="WHO I AM" title="About" highlight="Me"/>
-
         <div style={{display:"flex", gap:"4rem", alignItems:"center", flexWrap:"wrap", marginTop:64}}>
-          {/* Illustration */}
           <div style={{flex:"0 0 auto", display:"flex", justifyContent:"center"}}>
             <AboutIllustration/>
           </div>
-
-          {/* Content */}
           <div style={{flex:"1 1 320px"}}>
             <h3 style={{color:"#f8fafc", fontSize:"clamp(1.5rem, 3vw, 2rem)", fontWeight:700, margin:"0 0 18px", fontFamily:"'Playfair Display', serif", lineHeight:1.3}}>
               Building <em style={{color:"#f97316", fontStyle:"italic"}}>impactful</em> solutions<br/>with clean architecture
@@ -517,14 +480,9 @@ function About() {
             <p style={{color:"#94a3b8", lineHeight:1.85, fontSize:15, marginBottom:30, fontFamily:"'Josefin Sans', sans-serif", fontWeight:300}}>
               Strong foundation in REST API integration, backend development, and performance optimization. Experienced in real-world full-stack projects with a focus on clean architecture and production-ready systems.
             </p>
-
-            {/* Info grid */}
             <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:12, marginBottom:28}}>
-              {INFO.map(({icon, label, value}) => (
-                <div key={label} style={{
-                  background:"rgba(15,22,40,0.9)", border:"1px solid rgba(249,115,22,0.12)",
-                  borderRadius:14, padding:"14px 16px", transition:"all 0.3s",
-                }}
+              {INFO.map(({icon,label,value}) => (
+                <div key={label} style={{background:"rgba(15,22,40,0.9)", border:"1px solid rgba(249,115,22,0.12)", borderRadius:14, padding:"14px 16px", transition:"all 0.3s"}}
                   onMouseEnter={e=>{e.currentTarget.style.border="1px solid rgba(249,115,22,0.38)"; e.currentTarget.style.background="rgba(249,115,22,0.05)";}}
                   onMouseLeave={e=>{e.currentTarget.style.border="1px solid rgba(249,115,22,0.12)"; e.currentTarget.style.background="rgba(15,22,40,0.9)";}}>
                   <div style={{display:"flex", alignItems:"center", gap:7, marginBottom:5}}>
@@ -535,15 +493,9 @@ function About() {
                 </div>
               ))}
             </div>
-
-            {/* Tags */}
             <div style={{display:"flex", flexWrap:"wrap", gap:9}}>
               {["REST APIs","JWT Auth","MVC Architecture","RBAC","Full-Stack","Agile"].map(tag => (
-                <span key={tag} style={{
-                  background:"rgba(249,115,22,0.08)", border:"1px solid rgba(249,115,22,0.22)",
-                  color:"#f97316", borderRadius:50, padding:"5px 15px",
-                  fontSize:11, fontWeight:700, fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1px",
-                }}>{tag}</span>
+                <span key={tag} style={{background:"rgba(249,115,22,0.08)", border:"1px solid rgba(249,115,22,0.22)", color:"#f97316", borderRadius:50, padding:"5px 15px", fontSize:11, fontWeight:700, fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1px"}}>{tag}</span>
               ))}
             </div>
           </div>
@@ -563,14 +515,7 @@ function SkillBar({name, level, delay=0}) {
         <span style={{color:"#f97316", fontSize:12, fontFamily:"'Josefin Sans', sans-serif", fontWeight:700}}>{level}%</span>
       </div>
       <div style={{height:5, background:"rgba(255,255,255,0.06)", borderRadius:6, overflow:"hidden"}}>
-        <div style={{
-          height:"100%",
-          background:"linear-gradient(90deg, #c2410c, #f97316, #fdba74)",
-          borderRadius:6,
-          width: inView ? `${level}%` : "0%",
-          transition:`width 1.3s cubic-bezier(0.4,0,0.2,1) ${delay}s`,
-          boxShadow:"0 0 10px rgba(249,115,22,0.45)",
-        }}/>
+        <div style={{height:"100%", background:"linear-gradient(90deg, #c2410c, #f97316, #fdba74)", borderRadius:6, width:inView?`${level}%`:"0%", transition:`width 1.3s cubic-bezier(0.4,0,0.2,1) ${delay}s`, boxShadow:"0 0 10px rgba(249,115,22,0.45)"}}/>
       </div>
     </div>
   );
@@ -585,21 +530,15 @@ function Skills() {
       <div ref={ref} style={{maxWidth:1100, margin:"0 auto", position:"relative", zIndex:1, opacity:inView?1:0, transform:inView?"none":"translateY(44px)", transition:"all 0.9s ease"}}>
         <SectionHeader label="WHAT I KNOW" title="My" highlight="Skills"/>
         <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(230px, 1fr))", gap:22, marginTop:64}}>
-          {Object.entries(SKILLS).map(([cat, {icon, items}], ci) => (
-            <div key={cat} style={{
-              background:"rgba(12,18,34,0.85)", border:"1px solid rgba(249,115,22,0.1)",
-              borderRadius:22, padding:"28px 24px", transition:"all 0.35s",
-              backdropFilter:"blur(8px)",
-            }}
+          {Object.entries(SKILLS).map(([cat,{icon,items}],ci) => (
+            <div key={cat} style={{background:"rgba(12,18,34,0.85)", border:"1px solid rgba(249,115,22,0.1)", borderRadius:22, padding:"28px 24px", transition:"all 0.35s", backdropFilter:"blur(8px)"}}
               onMouseEnter={e=>{e.currentTarget.style.border="1px solid rgba(249,115,22,0.38)"; e.currentTarget.style.transform="translateY(-5px)"; e.currentTarget.style.boxShadow="0 20px 50px rgba(249,115,22,0.08)";}}
               onMouseLeave={e=>{e.currentTarget.style.border="1px solid rgba(249,115,22,0.1)"; e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="none";}}>
               <div style={{display:"flex", alignItems:"center", gap:10, marginBottom:22}}>
-                <div style={{width:36, height:36, borderRadius:10, background:"rgba(249,115,22,0.12)", display:"flex", alignItems:"center", justifyContent:"center", color:"#f97316"}}>
-                  {icon}
-                </div>
+                <div style={{width:36, height:36, borderRadius:10, background:"rgba(249,115,22,0.12)", display:"flex", alignItems:"center", justifyContent:"center", color:"#f97316"}}>{icon}</div>
                 <h3 style={{color:"#f8fafc", fontSize:15, fontWeight:700, fontFamily:"'Playfair Display', serif", letterSpacing:"-0.3px"}}>{cat}</h3>
               </div>
-              {items.map((s,i) => <SkillBar key={s.name} name={s.name} level={s.level} delay={ci*0.08 + i*0.1}/>)}
+              {items.map((s,i) => <SkillBar key={s.name} name={s.name} level={s.level} delay={ci*0.08+i*0.1}/>)}
             </div>
           ))}
         </div>
@@ -608,37 +547,27 @@ function Skills() {
   );
 }
 
+/* ─── PROJECTS — with working GitHub & Live Demo links ──────────────── */
 function Projects() {
   const ref = useRef();
   const inView = useInView(ref);
   return (
-    <section id="projects" style={{
-      padding:"110px 2.5rem",
-      background:"#070b18",
-      position:"relative", overflow:"hidden",
-    }}>
-      {/* Background code texture */}
+    <section id="projects" style={{padding:"110px 2.5rem", background:"#070b18", position:"relative", overflow:"hidden"}}>
       <div style={{position:"absolute", inset:0, backgroundImage:"url('https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=1600&auto=format&q=25')", backgroundSize:"cover", backgroundPosition:"center", opacity:0.03, pointerEvents:"none"}}/>
-
       <div ref={ref} style={{maxWidth:1100, margin:"0 auto", position:"relative", zIndex:1, opacity:inView?1:0, transform:inView?"none":"translateY(44px)", transition:"all 0.9s ease"}}>
         <SectionHeader label="WHAT I'VE BUILT" title="My" highlight="Projects"/>
-
         <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(460px, 1fr))", gap:24, marginTop:64}}>
           {PROJECTS.map(p => {
             const c = COLOR_MAP[p.color];
             return (
-              <div key={p.title} style={{
-                background:"rgba(10,16,30,0.9)", border:`1px solid ${c.border.replace("0.35","0.12")}`,
-                borderRadius:24, padding:"32px", transition:"all 0.38s", position:"relative", overflow:"hidden",
-                backdropFilter:"blur(6px)",
-              }}
+              <div key={p.title} style={{background:"rgba(10,16,30,0.9)", border:`1px solid ${c.border.replace("0.35","0.12")}`, borderRadius:24, padding:"32px", transition:"all 0.38s", position:"relative", overflow:"hidden", backdropFilter:"blur(6px)"}}
                 onMouseEnter={e=>{e.currentTarget.style.border=`1px solid ${c.border}`; e.currentTarget.style.transform="translateY(-7px)"; e.currentTarget.style.boxShadow=`0 24px 64px ${c.bg}`;}}
                 onMouseLeave={e=>{e.currentTarget.style.border=`1px solid ${c.border.replace("0.35","0.12")}`; e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="none";}}>
 
                 {/* Glow blob */}
                 <div style={{position:"absolute", top:-40, right:-40, width:160, height:160, borderRadius:"50%", background:`radial-gradient(circle, ${c.bg} 0%, transparent 70%)`, pointerEvents:"none"}}/>
 
-                {/* Header */}
+                {/* ── Header with link buttons ── */}
                 <div style={{display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:18}}>
                   <div style={{display:"flex", alignItems:"center", gap:14}}>
                     <div style={{width:52, height:52, borderRadius:14, background:c.bg, border:`1px solid ${c.border}`, display:"flex", alignItems:"center", justifyContent:"center", color:c.text, flexShrink:0}}>
@@ -649,7 +578,26 @@ function Projects() {
                       <span style={{color:"#64748b", fontSize:11.5, fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"0.5px"}}>{p.period}</span>
                     </div>
                   </div>
-                  <ExternalLink size={17} color={c.text} opacity={0.55} style={{marginTop:4, flexShrink:0}}/>
+
+                  {/* Link icon buttons — top right of card */}
+                  <div style={{display:"flex", gap:8, flexShrink:0, marginTop:2}}>
+                    {p.liveUrl && (
+                      <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" title="Live Demo"
+                        style={{width:32, height:32, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center", background:`rgba(249,115,22,0.12)`, border:`1px solid rgba(249,115,22,0.35)`, color:"#f97316", textDecoration:"none", transition:"all 0.3s"}}
+                        onMouseEnter={e=>{e.currentTarget.style.background="#f97316"; e.currentTarget.style.color="#fff"; e.currentTarget.style.transform="translateY(-2px)"; e.currentTarget.style.boxShadow="0 6px 16px rgba(249,115,22,0.5)";}}
+                        onMouseLeave={e=>{e.currentTarget.style.background="rgba(249,115,22,0.12)"; e.currentTarget.style.color="#f97316"; e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="none";}}>
+                        <ExternalLink size={14}/>
+                      </a>
+                    )}
+                    {p.githubUrl && (
+                      <a href={p.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub Repo"
+                        style={{width:32, height:32, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center", background:"rgba(255,255,255,0.05)", border:"1px solid rgba(255,255,255,0.12)", color:"#94a3b8", textDecoration:"none", transition:"all 0.3s"}}
+                        onMouseEnter={e=>{e.currentTarget.style.background="rgba(249,115,22,0.12)"; e.currentTarget.style.border=`1px solid rgba(249,115,22,0.35)`; e.currentTarget.style.color="#f97316"; e.currentTarget.style.transform="translateY(-2px)";}}
+                        onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,0.05)"; e.currentTarget.style.border="1px solid rgba(255,255,255,0.12)"; e.currentTarget.style.color="#94a3b8"; e.currentTarget.style.transform="none";}}>
+                        <GitBranch size={14}/>
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 <p style={{color:"#94a3b8", fontSize:13.5, lineHeight:1.8, marginBottom:18, fontFamily:"'Josefin Sans', sans-serif", fontWeight:300}}>{p.desc}</p>
@@ -662,7 +610,7 @@ function Projects() {
                 </div>
 
                 {/* Tech stack */}
-                <div style={{display:"flex", flexWrap:"wrap", gap:7, borderTop:"1px solid rgba(255,255,255,0.055)", paddingTop:16}}>
+                <div style={{display:"flex", flexWrap:"wrap", gap:7, borderTop:"1px solid rgba(255,255,255,0.055)", paddingTop:16, marginBottom:16}}>
                   {p.tech.map(t => (
                     <span key={t} style={{background:"rgba(255,255,255,0.04)", color:"#64748b", fontSize:11.5, padding:"4px 12px", borderRadius:7, fontFamily:"'Josefin Sans', sans-serif", border:"1px solid rgba(255,255,255,0.07)"}}>{t}</span>
                   ))}
@@ -683,28 +631,22 @@ function Contact() {
   const [sent, setSent] = useState(false);
 
   const handleSubmit = () => {
-  if (form.name && form.email && form.message) {
-    emailjs.send(
-      'YOUR_SERVICE_ID',      // from EmailJS dashboard
-      'YOUR_TEMPLATE_ID',     // from EmailJS dashboard
-      {
-        from_name: form.name,
-        from_email: form.email,
-        message: form.message,
-      },
-      'YOUR_PUBLIC_KEY'       // from EmailJS dashboard
-    )
-    .then(() => {
-      setSent(true);
-      setTimeout(() => setSent(false), 3000);
-      setForm({ name: "", email: "", message: "" });
-    })
-    .catch((err) => {
-      console.error('Failed to send:', err);
-      alert('Something went wrong. Please try again.');
-    });
-  }
-};
+    if (form.name && form.email && form.message) {
+      emailjs.send(
+        'service_804s8tm',
+        'template_bo1sttn',
+        { from_name: form.name, from_email: form.email, message: form.message },
+        'DgLDwQDT_Q_6G9kQF'
+      ).then(() => {
+        setSent(true);
+        setTimeout(() => setSent(false), 3000);
+        setForm({name:"", email:"", message:""});
+      }).catch(err => {
+        console.error('Failed to send:', err);
+        alert('Something went wrong. Please try again.');
+      });
+    }
+  };
 
   const inp = {
     width:"100%", background:"rgba(12,18,34,0.85)", border:"none",
@@ -718,9 +660,7 @@ function Contact() {
       <ContactBg/>
       <div ref={ref} style={{maxWidth:900, margin:"0 auto", position:"relative", zIndex:1, opacity:inView?1:0, transform:inView?"none":"translateY(44px)", transition:"all 0.9s ease"}}>
         <SectionHeader label="LET'S WORK TOGETHER" title="Get In" highlight="Touch"/>
-
         <div style={{display:"flex", gap:"4rem", flexWrap:"wrap", marginTop:64}}>
-          {/* Info */}
           <div style={{flex:"1 1 240px"}}>
             <h3 style={{color:"#f8fafc", fontSize:"clamp(1.2rem,2.5vw,1.6rem)", fontWeight:700, fontFamily:"'Playfair Display', serif", margin:"0 0 16px", lineHeight:1.3}}>
               Let's build something<br/><em style={{color:"#f97316"}}>remarkable</em> together
@@ -741,8 +681,6 @@ function Contact() {
               ))}
             </div>
           </div>
-
-          {/* Form */}
           <div style={{flex:"1 1 340px", display:"flex", flexDirection:"column", gap:26}}>
             {[
               {id:"name", ph:"Your Name", icon:<User size={15}/>, type:"text"},
@@ -751,7 +689,7 @@ function Contact() {
               <div key={id} style={{position:"relative"}}>
                 <span style={{position:"absolute", left:4, bottom:15, color:"#64748b"}}>{icon}</span>
                 <input placeholder={ph} type={type} value={form[id]}
-                  onChange={e => setForm(f=>({...f,[id]:e.target.value}))}
+                  onChange={e=>setForm(f=>({...f,[id]:e.target.value}))}
                   style={inp}
                   onFocus={e=>{e.target.style.borderBottomColor="#f97316";}}
                   onBlur={e=>{e.target.style.borderBottomColor="rgba(255,255,255,0.08)";}}/>
@@ -766,11 +704,11 @@ function Contact() {
                 onBlur={e=>{e.target.style.borderBottomColor="rgba(255,255,255,0.08)";}}/>
             </div>
             <button onClick={handleSubmit} style={{
-              background: sent ? "#10b981" : "#f97316", border:"none", color:"#fff",
+              background:sent?"#10b981":"#f97316", border:"none", color:"#fff",
               fontSize:12, fontWeight:700, padding:"16px", borderRadius:50,
               cursor:"pointer", transition:"all 0.35s", display:"flex", alignItems:"center",
               justifyContent:"center", gap:10,
-              boxShadow: sent?"0 6px 24px rgba(16,185,129,0.5)":"0 6px 26px rgba(249,115,22,0.5)",
+              boxShadow:sent?"0 6px 24px rgba(16,185,129,0.5)":"0 6px 26px rgba(249,115,22,0.5)",
               fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"2px", textTransform:"uppercase",
             }}
               onMouseEnter={e=>{if(!sent){e.currentTarget.style.transform="translateY(-3px)"; e.currentTarget.style.boxShadow="0 14px 38px rgba(249,115,22,0.65)";}}}
@@ -790,10 +728,16 @@ function Contact() {
           &copy; {new Date().getFullYear()} Aiswarya Amrithraj E. All rights reserved.
         </p>
         <div style={{display:"flex", gap:22}}>
-          {["GitHub","LinkedIn"].map(l=>(
-            <a key={l} href="#" style={{color:"#475569", fontSize:12, textDecoration:"none", transition:"color 0.2s", fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1px", fontWeight:600}}
+          {[
+            {label:"GitHub", url:"https://github.com/aiswaryaamrithraj"},
+            {label:"LinkedIn", url:"https://www.linkedin.com/in/aiswarya-amrithraj-e/"},
+          ].map(({label,url}) => (
+            <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+              style={{color:"#475569", fontSize:12, textDecoration:"none", transition:"color 0.2s", fontFamily:"'Josefin Sans', sans-serif", letterSpacing:"1px", fontWeight:600}}
               onMouseEnter={e=>e.target.style.color="#f97316"}
-              onMouseLeave={e=>e.target.style.color="#475569"}>{l}</a>
+              onMouseLeave={e=>e.target.style.color="#475569"}>
+              {label}
+            </a>
           ))}
         </div>
       </div>
