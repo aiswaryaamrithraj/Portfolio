@@ -633,10 +633,14 @@ function Contact() {
   const handleSubmit = () => {
     if (form.name && form.email && form.message) {
       emailjs.send(
-        'service_804s8tm',
-        'template_bo1sttn',
-        { from_name: form.name, from_email: form.email, message: form.message },
-        'DgLDwQDT_Q_6G9kQF'
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       ).then(() => {
         setSent(true);
         setTimeout(() => setSent(false), 3000);
